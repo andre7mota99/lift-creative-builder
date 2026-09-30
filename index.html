@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lift.win Creative Builder — Team Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #0f172e;
+            --dark-card: #1a2240;
+            --lime: #7FDE21;
+            --purple: #a855f7;
+            --text-primary: #ffffff;
+            --text-secondary: #b8c5d6;
+            --border-color: #2d3f5c;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2558 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2558 100%);
+            padding: 50px 40px;
+            text-align: center;
+            border-bottom: 2px solid var(--lime);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--lime) 0%, #a0ff00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.15em;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: var(--dark-bg);
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+            padding: 0 40px;
+        }
+
+        .nav-tab {
+            padding: 20px 28px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border: none;
+            background: none;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            color: var(--lime);
+        }
+
+        .nav-tab.active {
+            color: var(--lime);
+            border-bottom-color: var(--lime);
+        }
+
+        .content {
+            padding: 50px 40px;
+            min-height: 600px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--lime);
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.5em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .framework-card {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+            border-left: 5px solid var(--lime);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .framework-card:hover {
+            box-shadow: 0 8px 20px rgba(127, 222, 33, 0.15);
+            transform: translateX(8px);
+            border-color: var(--lime);
+        }
+
+        .framework-card h4 {
+            color: var(--lime);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .framework-card .label {
+            display: inline-block;
+            background: var(--lime);
+            color: var(--dark-bg);
+            padding: 6px 15px;
+            border-radius: 24px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .formula {
+            background: var(--dark-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: var(--lime);
+            line-height: 1.8;
+        }
+
+        .framework-detail {
+            background: rgba(127, 222, 33, 0.05);
+            border-left: 4px solid var(--lime);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .framework-detail strong {
+            color: var(--lime);
+        }
+
+        .example {
+            background: rgba(168, 85, 247, 0.08);
+            border-left: 4px solid var(--purple);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .example strong {
+            color: var(--purple);
+        }
+
+        .when-to-use {
+            background: rgba(127, 222, 33, 0.05);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--lime);
+        }
+
+        .when-to-use strong {
+            color: var(--lime);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--dark-bg);
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2558 100%);
+            border-bottom: 2px solid var(--lime);
+        }
+
+        th {
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--lime);
+            font-size: 0.95em;
+        }
+
+        td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        tr:hover {
+            background: rgba(127, 222, 33, 0.05);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--lime);
+            color: var(--dark-bg);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95em;
+        }
+
+        .cta-button:hover {
+            background: #a0ff00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(127, 222, 33, 0.3);
+        }
+
+        .checklist {
+            background: rgba(127, 222, 33, 0.08);
+            border-left: 4px solid var(--lime);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .checklist li {
+            list-style: none;
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--lime);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .hook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .hook-item {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--purple);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .hook-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(168, 85, 247, 0.2);
+        }
+
+        .hook-item strong {
+            color: var(--lime);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .hook-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.9em;
+        }
+
+        .phase {
+            background: linear-gradient(135deg, rgba(127, 222, 33, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid var(--lime);
+            border: 1px solid var(--border-color);
+        }
+
+        .phase h4 {
+            color: var(--lime);
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .phase p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+
+        .phase strong {
+            color: var(--text-primary);
+        }
+
+        code {
+            background: var(--dark-bg);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            color: var(--lime);
+            border: 1px solid var(--border-color);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(127, 222, 33, 0.2) 0%, rgba(127, 222, 33, 0.1) 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--lime);
+        }
+
+        footer {
+            background: var(--dark-bg);
+            padding: 30px 40px;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, rgba(127, 222, 33, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+            border: 2px solid var(--lime);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+        }
+
+        .intro-box p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .intro-box strong {
+            color: var(--lime);
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .stat {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+            padding: 18px 25px;
+            margin: 10px 15px 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--lime);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat strong {
+            color: var(--lime);
+            font-size: 1.2em;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 35px 0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            header {
+                padding: 35px 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .nav-tabs {
+                padding: 0 20px;
+            }
+
+            .nav-tab {
+                padding: 15px 18px;
+                font-size: 0.85em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .hook-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Lift.win Creative Builder</h1>
+            <p>Comprehensive Team Guide for High-Converting iGaming Video Ads</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('frameworks')">📐 Copy Frameworks</button>
+            <button class="nav-tab" onclick="switchTab('how-to-use')">🚀 How to Use</button>
+            <button class="nav-tab" onclick="switchTab('examples')">💡 Examples</button>
+            <button class="nav-tab" onclick="switchTab('testing')">🧪 Testing</button>
+            <button class="nav-tab" onclick="switchTab('hooks')">📝 Hooks</button>
+        </div>
+
+        <div class="content">
+            <!-- FRAMEWORKS TAB -->
+            <div id="frameworks" class="tab-content active">
+                <h2>Copy Frameworks — The Psychology Behind Conversion</h2>
+
+                <div class="intro-box">
+                    <p><strong>What is a framework?</strong> A proven psychological structure that guides how you tell your brand's story. It's the skeleton that holds your message together.</p>
+                    <p><strong>Why frameworks matter:</strong> The exact same product (bonus stacking, deposit match, free entries) converts 2-5x better when presented through the right framework. We've tested these across Wandando, Shuffle, Vegas Builder, Coinz, and more.</p>
+                    <p><strong>How to use this section:</strong> Read each framework's structure, understand when to use it, study the examples, then apply it to your prompts.</p>
+                </div>
+
+                <!-- Framework 1 -->
+                <div class="framework-card">
+                    <h4>1. Hook-Story-Offer ⭐⭐ STRONGEST FOR SWEEPSTAKES</h4>
+                    <span class="label">Daily Stacking • New Player Acquisition • Direct Urgency</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> Captures attention with a specific benefit, proves it with visual proof, then drives action with urgency. The human brain responds to specificity + evidence + urgency.
+                    </div>
+
+                    <div class="formula">
+HOOK (0-3s): Curiosity gap + specific dollar amount
+    "Stack $200+ in daily entries (takes 3 minutes)"
+
+STORY (3-9s): Show the product in action
+    Visual proof: Notifications stacking → Balance growing → Player winning
+
+OFFER (9-12s): Direct CTA + time limit
+    "Download now. Claim your stack before midnight."
+                    </div>
+
+                    <div class="example">
+                        <strong>Wandando Real Example:</strong><br>
+                        HOOK: "Guaranteed $200+ per week in daily entries (zero deposit)"<br>
+                        STORY: [COMPOSITING PLATE: Notifications popping, entry count climbing, happy player reaction]<br>
+                        OFFER: "Download the app. Stack your entries now."
+                    </div>
+
+                    <div class="example">
+                        <strong>Coinz Real Example:</strong><br>
+                        HOOK: "Stack $50+ daily. No deposit required."<br>
+                        STORY: [Show app opening → bonus notifications appearing → balance updating in real-time]<br>
+                        OFFER: "Get Coinz today. Your stack starts now."
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> First-time campaigns, competitive geos, when you have a specific monetary hook. Best for daily active players and acquisition.
+                    </div>
+                </div>
+
+                <!-- Framework 2 -->
+                <div class="framework-card">
+                    <h4>2. BAB (Before-After-Bridge) ⭐ TRANSFORMATION STORIES</h4>
+                    <span class="label">Visual Transformation • Account Growth • Deposit Matching</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> Humans are visual creatures. Showing the gap between "struggling" and "winning" creates desire. The bridge explains how they get there.
+                    </div>
+
+                    <div class="formula">
+BEFORE: Problem state (small balance, frustration, missed opportunity)
+    "Player has $20 in their account"
+
+AFTER: Solved state (doubled, tripled, winning)
+    "Player now has $40 after bonus match"
+
+BRIDGE: Your product closes the gap
+    "Deposit $20, get $20 bonus = instant doubling"
+                    </div>
+
+                    <div class="example">
+                        <strong>Vegas Builder Real Example:</strong><br>
+                        BEFORE: $20 balance, looking small and weak<br>
+                        AFTER: $40 balance, player smiling confidently<br>
+                        BRIDGE: "Deposit $20, get $20 bonus. Double your power instantly."
+                    </div>
+
+                    <div class="example">
+                        <strong>Shuffle Real Example:</strong><br>
+                        BEFORE: Player at Base tier (few bonuses)<br>
+                        AFTER: Player at VIP tier (3x bonuses)<br>
+                        BRIDGE: "Play 3 times. Unlock VIP. 3x your daily bonuses."
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> Deposit-driven campaigns, retention messaging, loyalty tier promotions. Works best with mid-tier players (those already playing).
+                    </div>
+                </div>
+
+                <!-- Framework 3 -->
+                <div class="framework-card">
+                    <h4>3. Epiphany Bridge ⭐⭐ MYTH-BUSTING & TRUST</h4>
+                    <span class="label">Skeptical Audiences • Trust-Building • Fairness Messaging</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> Your audience has a limiting belief ("All sweepstakes are rigged"). This framework shatters that myth and replaces it with a new possibility.
+                    </div>
+
+                    <div class="formula">
+FALSE BELIEF: The myth they believe
+    "Sweepstakes apps are rigged"
+
+NEW POSSIBILITY: What's actually true
+    "Fair odds. Verified winners. Real payouts."
+
+VEHICLE: How your product proves it
+    "Coinz shows daily winner lists + transparent odds"
+                    </div>
+
+                    <div class="example">
+                        <strong>Coinz Real Example:</strong><br>
+                        FALSE BELIEF: "Online sweepstakes don't pay real money"<br>
+                        NEW POSSIBILITY: "Real people win real cash every single day"<br>
+                        VEHICLE: "Coinz publishes verified winners daily. Check the proof."
+                    </div>
+
+                    <div class="example">
+                        <strong>Wandando Real Example:</strong><br>
+                        FALSE BELIEF: "You need to deposit to get good bonuses"<br>
+                        NEW POSSIBILITY: "Free players get the same daily bonus stack"<br>
+                        VEHICLE: "Wandando's algorithm treats all players equally"
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> New geos with skeptical audiences, competitive markets, when you have proof/certifications. Works for building brand credibility long-term.
+                    </div>
+                </div>
+
+                <!-- Framework 4 -->
+                <div class="framework-card">
+                    <h4>4. PAS (Problem-Agitate-Solve) ⭐ EDUCATIONAL & MATH-DRIVEN</h4>
+                    <span class="label">Missed Opportunity • Math Proof • Education-Focused</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> Start by naming the missed opportunity. Deepen the pain with numbers. Then present your product as the obvious solution. Best for rational, numbers-driven audiences.
+                    </div>
+
+                    <div class="formula">
+PROBLEM (0-3s): Name the missed opportunity
+    "You're losing $50-200 weekly in unclaimed bonuses"
+
+AGITATE (3-8s): Show the cost of inaction
+    "Every day you don't claim = $30 competitors just stacked"
+
+SOLVE (8-12s): Present the mechanism
+    "Shuffle auto-claims all bonuses. No effort. No thinking."
+                    </div>
+
+                    <div class="example">
+                        <strong>Shuffle Real Example:</strong><br>
+                        PROBLEM: "You miss loyalty bonuses every week"<br>
+                        AGITATE: "That's $200+ monthly. Leaving money on the table."<br>
+                        SOLVE: "Shuffle auto-stacks daily. You keep 100% of bonuses."
+                    </div>
+
+                    <div class="example">
+                        <strong>Vegas Builder Real Example:</strong><br>
+                        PROBLEM: "Most players only claim base bonuses"<br>
+                        AGITATE: "They're missing tier bonuses. That's $150+ monthly."<br>
+                        SOLVE: "Level up your tier. Unlock hidden bonuses."
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> Mid-tier player engagement, financial/opportunity messaging, geos with educated/analytical audiences. Best for showing ROI.
+                    </div>
+                </div>
+
+                <!-- Framework 5 -->
+                <div class="framework-card">
+                    <h4>5. 4U's (Unique + Useful + Urgent + Understandable) ⭐⭐ POWERHOUSE</h4>
+                    <span class="label">Multi-Trigger Layering • Phase 3 Testing • Scale Campaigns</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> This isn't one framework—it's four psychological triggers stacked together. Each trigger fires a different part of the brain. Overkill for Phase 1, perfect for Phase 3 when you're scaling proven winners.
+                    </div>
+
+                    <div class="formula">
+UNIQUE: What sets you apart from 10 competitors
+    "Only app with guaranteed daily entries + zero-deposit"
+
+USEFUL: Solves their actual problem/desire
+    "Get $50-200 weekly in free plays"
+
+URGENT: Why act NOW (scarcity, deadline, FOMO)
+    "48-hour bonus double-stack (this week only)"
+
+UNDERSTANDABLE: Can they get it in 3 seconds?
+    "Open app. Claim bonus. Play free. Keep winnings."
+                    </div>
+
+                    <div class="example">
+                        <strong>Coinz Real Example:</strong><br>
+                        UNIQUE: "Only sweepstakes app with daily guaranteed entries (no deposit)"<br>
+                        USEFUL: "Build $300+/month from free plays"<br>
+                        URGENT: "New player bonus (2x stack, 48 hours)"<br>
+                        UNDERSTANDABLE: "3-tap onboarding. Play within 60 seconds."
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> Phase 3 testing, scale campaigns, when you've proven framework works. Don't use for Phase 1 (too complex). This is your scaling weapon.
+                    </div>
+                </div>
+
+                <!-- Framework 6 -->
+                <div class="framework-card">
+                    <h4>6. AIDA (Attention + Interest + Desire + Action) ⭐ STAT-DRIVEN BREAKTHROUGH</h4>
+                    <span class="label">Breaking Through Noise • Stat-Driven • New Campaigns</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> Opens with a surprising stat to grab eyeballs. Then builds curiosity → desire → action. The stat is your hook to stop the scroll.
+                    </div>
+
+                    <div class="formula">
+ATTENTION (0-2s): Surprising stat or contrast
+    "95% of sweepstakes players miss this"
+
+INTEREST (2-6s): Build curiosity with visuals
+    Show the mechanic working. Make them wonder.
+
+DESIRE (6-10s): "Imagine what this could mean for you"
+    Paint the outcome: $300+ monthly, no effort
+
+ACTION (10-12s): Clear CTA with urgency
+    "Download Coinz now. Claim your bonus before midnight."
+                    </div>
+
+                    <div class="example">
+                        <strong>Coinz Real Example:</strong><br>
+                        ATTENTION: "99% of free-to-play casinos don't offer this"<br>
+                        INTEREST: [Show: Daily notifications, stacking entries, balance climbing]<br>
+                        DESIRE: "Imagine stacking $50+ daily just for opening the app"<br>
+                        ACTION: "Download Coinz. Claim your stack today."
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> Crowded platforms (TikTok, Instagram), when you need to break through noise, competitive geos. Best for impulse-driven audiences.
+                    </div>
+                </div>
+
+                <!-- Framework 7 -->
+                <div class="framework-card">
+                    <h4>7. Story-Driven (Narrative) ⭐ EMOTIONAL CONNECTION & BRAND BUILDING</h4>
+                    <span class="label">Emotional Connection • Brand-Building • Trust & Resonance</span>
+
+                    <div class="framework-detail">
+                        <strong>Why it works:</strong> Humans are wired for stories. A relatable protagonist facing a real problem, discovering your solution, and transforming their life creates deep emotional connection and brand loyalty.
+                    </div>
+
+                    <div class="formula">
+PERSON (0-2s): Relatable protagonist
+    Age, situation, frustration. "Sarah, late 30s, stays home with 2 kids"
+
+PROBLEM (2-5s): Specific challenge they face
+    "Wants extra cash but can't work a second job"
+
+DISCOVERY (5-8s): They find your product
+    "Finds Coinz. Realizes she can build a bankroll from home."
+
+TRANSFORMATION (8-11s): Their life changes
+    "Now she stacks $300/month. Her kids have a college fund."
+
+CTA (11-12s): "You could be next. Download now."
+                    </div>
+
+                    <div class="example">
+                        <strong>Coinz Real Example:</strong><br>
+                        PERSON: "Marcus, 42, former mechanic, out of work"<br>
+                        PROBLEM: "Needs income but job market is brutal"<br>
+                        DISCOVERY: "Friends recommend Coinz for free bonuses"<br>
+                        TRANSFORMATION: "Turns $50 free bonus into $2,000 in 3 months"<br>
+                        CTA: "Your comeback starts now. Download Coinz."
+                    </div>
+
+                    <div class="when-to-use">
+                        <strong>When to use:</strong> Brand-building phases, retention campaigns, when you want long-term trust. Not for Phase 1 (slower to convert but builds loyalty). Best for YouTube, longer-form content.
+                    </div>
+                </div>
+
+                <h3>Framework Quick Reference</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Campaign Goal</th>
+                                <th>Best Framework</th>
+                                <th>When to Use</th>
+                                <th>Expected Outcome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>New Player Acquisition</strong></td>
+                                <td>Hook-Story-Offer</td>
+                                <td>Day 1-7 campaigns</td>
+                                <td>Highest CTR & impulse signups</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deposit-Driven</strong></td>
+                                <td>BAB</td>
+                                <td>When promoting matched deposits</td>
+                                <td>Clear before/after convinces purchase</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Building Trust</strong></td>
+                                <td>Epiphany Bridge</td>
+                                <td>New geos, skeptical audiences</td>
+                                <td>Myth-busting & credibility</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Re-engagement</strong></td>
+                                <td>PAS</td>
+                                <td>Lapsed player campaigns</td>
+                                <td>Shows missed opportunity in numbers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scaling Winners</strong></td>
+                                <td>4U's</td>
+                                <td>Phase 3 testing (proven winners)</td>
+                                <td>Maximum psychological triggers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Breakthrough Noise</strong></td>
+                                <td>AIDA</td>
+                                <td>Crowded platforms (TikTok, IG)</td>
+                                <td>Best stat-driven hook stops scrolls</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brand Building</strong></td>
+                                <td>Story-Driven</td>
+                                <td>Long-term, emotional messaging</td>
+                                <td>Deep emotional connection & loyalty</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- HOW TO USE TAB -->
+            <div id="how-to-use" class="tab-content">
+                <h2>How to Use the /lift-win-creative-builder Skill</h2>
+
+                <div class="intro-box">
+                    <p><strong>One skill. One job.</strong> Transform your brand info + landing page into copy-paste-ready Higgsfield prompts.</p>
+                    <p><strong>Input:</strong> Brand name, bonus hook, geo, positioning</p>
+                    <p><strong>Output:</strong> Still prompt (GPT Image 2) + Video prompt (Seedance 2.5) + Compliance checklist</p>
+                </div>
+
+                <h3>Step 1: Invoke the Skill with Your Info</h3>
+                <div class="formula">
+/lift-win-creative-builder start
+
+Brand: Wandando
+Landing page: https://wandando.com/
+Geo: US
+Bonus hook: "Stack $200+ in daily entries"
+Audience: Daily active players
+Positioning: "One daily hack = $200+ per week"
+Format: Video (12 seconds)
+                </div>
+
+                <h3>Step 2: Choose Your Path</h3>
+                <p><strong>PATH A: Upload & Analyze (FASTEST)</strong></p>
+                <p style="margin-left: 20px; color: var(--text-secondary);">Upload current ad + landing page → Skill extracts USPs → Recommends framework</p>
+
+                <p style="margin-top: 20px;"><strong>PATH B: Build from Scratch</strong></p>
+                <p style="margin-left: 20px; color: var(--text-secondary);">Give skill the info above → Skill recommends framework → Generates prompts</p>
+
+                <h3>Step 3: The Skill Returns</h3>
+                <div class="checklist">
+                    <ul>
+                        <li>Framework recommendation (e.g., Hook-Story-Offer)</li>
+                        <li>Still prompt (ready for GPT Image 2)</li>
+                        <li>Video prompt (ready for Seedance 2.5, 12 seconds)</li>
+                        <li>Compliance checklist (FTC rules, age gate, offer parity)</li>
+                    </ul>
+                </div>
+
+                <h3>Step 4: Copy Prompts to Higgsfield</h3>
+                <ol>
+                    <li>Copy still prompt → Higgsfield GPT Image 2</li>
+                    <li>Copy video prompt → Higgsfield Seedance 2.5</li>
+                    <li>Download outputs (still + video)</li>
+                </ol>
+
+                <h3>Step 5: Post-Production & Compliance</h3>
+                <ol>
+                    <li>Overlay real bonus UI onto compositing plate (After Effects)</li>
+                    <li>Replace audio if needed (ffmpeg loudnorm)</li>
+                    <li>Burn overlays: age gate (18+/21+), CTA, compliance disclaimers</li>
+                    <li>Export to Meta/TikTok specs</li>
+                </ol>
+
+                <h3>Safety Checkpoints (Don't Skip)</h3>
+                <div class="checklist">
+                    <ul>
+                        <li>Compositing plate marked (where real bonus UI goes)</li>
+                        <li>No fake payment screens in video</li>
+                        <li>Age gate visible (18+ or 21+ per state)</li>
+                        <li>Bonus amount matches landing page exactly</li>
+                        <li>Ad copy matches landing page offer (offer parity)</li>
+                        <li>No "guaranteed wins" language (use "guaranteed entries")</li>
+                        <li>Video length = 12 seconds (±2s acceptable)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- EXAMPLES TAB -->
+            <div id="examples" class="tab-content">
+                <h2>Real Examples — Live from Your Clients</h2>
+
+                <h3>Example 1: Wandando (Daily Bonus Stacking)</h3>
+                <p><strong>Client Goal:</strong> Acquire daily active players with high-commitment hook</p>
+                <div class="formula">
+Brand: Wandando
+Geo: US
+Bonus hook: "Stack $200+ in daily entries, takes 3 minutes"
+Audience: Daily active players
+Positioning: "One daily hack = $200+ per week"
+Format: Video (12s)
+                </div>
+
+                <p style="margin-top: 25px;"><strong>Framework Selected:</strong> Hook-Story-Offer</p>
+                <div class="example">
+                    <strong>HOOK:</strong> "Guaranteed $200+ per week in daily entries (zero deposit)"<br><br>
+                    <strong>STORY:</strong> [COMPOSITING PLATE: Notifications popping, entry count climbing, player smiling, balance updating live]<br><br>
+                    <strong>OFFER:</strong> "Download Wandando now. Stack your entries today."
+                </div>
+
+                <p style="margin-top: 25px;"><strong>Still Prompt Generated (GPT Image 2):</strong></p>
+                <div class="formula">
+9:16 vertical still, ultra high quality, professional.
+Scene: Wandando app on phone screen, notification badges showing daily bonuses.
+Player hand visible swiping/claiming bonus.
+On-screen text overlay: "Stack $200+ Daily Entries"
+Mood: Bright, energetic, trustworthy, mobile-first.
+Color palette: Gold/green accents on dark background.
+                </div>
+
+                <p style="margin-top: 25px;"><strong>Video Prompt Generated (Seedance 2.5):</strong></p>
+                <div class="formula">
+9:16 video, 12 seconds total.
+Camera: Slow zoom on phone screen.
+Motion: Notifications animate in (stacking effect), entry count ticks upward, player taps claim.
+Pacing: Medium-fast with breathing room at end.
+Ending: COMPOSITING PLATE (dark fade) — Real bonus UI overlays in post-production.
+Audio: Upbeat, energetic soundtrack matching notification pops.
+                </div>
+
+                <hr>
+
+                <h3>Example 2: Shuffle (Loyalty Tiers)</h3>
+                <p><strong>Client Goal:</strong> Re-engage existing players with tier progression</p>
+                <p><strong>Framework Selected:</strong> Epiphany Bridge (myth-busting)</p>
+
+                <div class="example">
+                    <strong>FALSE BELIEF:</strong> "All sweepstakes apps are the same"<br><br>
+                    <strong>NEW POSSIBILITY:</strong> "Loyalty bonuses scale with your play"<br><br>
+                    <strong>VEHICLE:</strong> "Shuffle's VIP tier system shows progression"
+                </div>
+
+                <p style="margin-top: 25px;"><strong>Video Prompt (Seedance 2.5):</strong></p>
+                <div class="formula">
+9:16 video, 12 seconds.
+Camera: Zoom into VIP badge, tier bar animates upward through tiers.
+Motion: Player levels up (visual progression), bonus amounts scale up at each tier.
+Gesture: Player celebrates (fist bump, thumbs up).
+Ending: COMPOSITING PLATE — Real tier UI overlays in post.
+Pacing: Medium (room to show progression clearly).
+                </div>
+
+                <hr>
+
+                <h3>Example 3: Vegas Builder (First-Deposit Match)</h3>
+                <p><strong>Client Goal:</strong> Drive first deposit with psychological match</p>
+                <p><strong>Framework Selected:</strong> BAB (Before-After-Bridge)</p>
+
+                <div class="example">
+                    <strong>BEFORE:</strong> Player account with $20 balance (shown as small, struggling)<br><br>
+                    <strong>AFTER:</strong> Same player now with $40 (doubled, winning energy)<br><br>
+                    <strong>BRIDGE:</strong> "Deposit $20, get $20 bonus = doubles your power instantly"
+                </div>
+
+                <h3>Example 4: Coinz (Trust-Building New Market)</h3>
+                <p><strong>Client Goal:</strong> Enter skeptical geo with fairness messaging</p>
+                <p><strong>Framework Selected:</strong> Epiphany Bridge + AIDA combination</p>
+
+                <div class="example">
+                    <strong>HOOK:</strong> "99% of apps don't offer this: Guaranteed daily free entries"<br><br>
+                    <strong>STORY:</strong> [Show: Notifications, entries stacking, verified winner announcement]<br><br>
+                    <strong>PROOF:</strong> "Coinz shows verified winners daily (see the proof)"<br><br>
+                    <strong>OFFER:</strong> "Download Coinz. Claim your guaranteed entries now."
+                </div>
+            </div>
+
+            <!-- TESTING TAB -->
+            <div id="testing" class="tab-content">
+                <h2>Testing Playbook — Phase 1/2/3 Methodology</h2>
+
+                <div class="intro-box">
+                    <p><strong>Goal:</strong> Identify the winning framework for your brand systematically, then scale it.</p>
+                    <p><strong>Duration:</strong> 3 weeks (1 week per phase)</p>
+                    <p><strong>Measurement:</strong> Hook retention → CTR → Conversion rate → CAC</p>
+                </div>
+
+                <h3>Phase 1: Foundation Testing (Week 1)</h3>
+                <div class="phase">
+                    <h4>🧪 Test: Hook-Story-Offer (3 Angle Variations)</h4>
+                    <p><strong>What to generate:</strong> Same brand, same framework, different hook angles</p>
+                    <p style="margin-top: 15px;"><strong>Variation 1:</strong> Daily bonus stacking hook<br>
+                    "Stack $200+ in guaranteed daily entries"</p>
+                    <p><strong>Variation 2:</strong> Free entries (no deposit required) hook<br>
+                    "Get daily free entries. Never deposit."</p>
+                    <p><strong>Variation 3:</strong> Highest bonuses in category hook<br>
+                    "Highest daily bonuses in the sweepstakes category"</p>
+                    <p style="margin-top: 15px;"><strong>What to measure:</strong> Hook retention (% watching past hook)</p>
+                    <p style="margin-top: 10px;"><span class="highlight">Winner → Moves to Phase 2</span></p>
+                </div>
+
+                <h3>Phase 2: Secondary Framework Testing (Week 2)</h3>
+                <div class="phase">
+                    <h4>🧪 Test: Winning Hook + 2 Alternative Frameworks</h4>
+                    <p><strong>Variation A:</strong> Winning Hook-Story-Offer from Phase 1</p>
+                    <p style="margin-top: 10px;"><strong>Variation B:</strong> Same hook with Epiphany Bridge (myth-busting frame)</p>
+                    <p><strong>Variation C:</strong> Same hook with PAS (problem-agitate-solve frame)</p>
+                    <p style="margin-top: 15px;"><strong>What to measure:</strong> CTR, landing page engagement, form completion rate</p>
+                    <p style="margin: 10px 0;"><span class="highlight">Top 2 performers → Move to Phase 3</span></p>
+                </div>
+
+                <h3>Phase 3: Urgency & Scale Testing (Week 3)</h3>
+                <div class="phase">
+                    <h4>🧪 Test: Top 2 Performers + Urgency Layer (4U's)</h4>
+                    <p><strong>Variation 1:</strong> Top performer + "48-hour bonus double-stack (this week only)"</p>
+                    <p style="margin-top: 10px;"><strong>Variation 2:</strong> Second place + "Limited-time VIP for first 500 new players"</p>
+                    <p><strong>Variation 3:</strong> Best hook + "Your bonus expires in 24 hours"</p>
+                    <p style="margin-top: 15px;"><strong>What to measure:</strong> Conversion rate, paid signups, CAC, ROI</p>
+                    <p style="margin: 10px 0;"><span class="highlight">Best performer → Scale</span></p>
+                </div>
+
+                <h3>After Phase 3: Ongoing Scaling & Refresh</h3>
+                <div class="checklist">
+                    <ul>
+                        <li><strong>Don't abandon winners.</strong> Once a framework works, keep it. Just refresh the copy angle.</li>
+                        <li><strong>Quarterly refresh.</strong> Update hook with new offer/positioning, keep the winning framework structure.</li>
+                        <li><strong>Test new frameworks monthly.</strong> Once you have a baseline, A/B test against a fresh framework to find 2nd place winners.</li>
+                        <li><strong>Track creative fatigue.</strong> If CTR drops >20% on proven winner, refresh the copy immediately.</li>
+                        <li><strong>Scale what works.</strong> Once a framework + hook combo wins, increase spend 30-50% per week until CAC degrades.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- HOOKS TAB -->
+            <div id="hooks" class="tab-content">
+                <h2>Hook Library — Copy-Paste Ready Hooks</h2>
+
+                <p>Use these proven hooks as starting points. Plug them into any framework above. Test, measure, iterate.</p>
+
+                <h3>Daily Entry Stacking Hooks</h3>
+                <div class="hook-grid">
+                    <div class="hook-item">
+                        <strong>Wandando</strong>
+                        <p>"Stack $200+ guaranteed daily entries. Takes 3 minutes."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Shuffle</strong>
+                        <p>"Earn $50-200 weekly. Zero deposit required."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Vegas Builder</strong>
+                        <p>"One daily hack = $50+ per week in guaranteed plays."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Coinz</strong>
+                        <p>"Stack $200+ daily in guaranteed free entries."</p>
+                    </div>
+                </div>
+
+                <h3>Trust & Fairness Hooks</h3>
+                <div class="hook-grid">
+                    <div class="hook-item">
+                        <strong>Fairness Focus</strong>
+                        <p>"Fair odds. Verified winners announced daily. No hidden fees."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Transparency</strong>
+                        <p>"Most sweepstakes are rigged. Ours publish winner lists daily."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Audit Messaging</strong>
+                        <p>"Transparent odds. Real payouts. Independently audited."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Social Proof</strong>
+                        <p>"500+ verified winners last month. See the proof."</p>
+                    </div>
+                </div>
+
+                <h3>Urgency & FOMO Hooks</h3>
+                <div class="hook-grid">
+                    <div class="hook-item">
+                        <strong>Daily Reset</strong>
+                        <p>"Bonuses reset every 24 hours. Miss today, miss $200."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Limited Time</strong>
+                        <p>"48-hour bonus double-stack. Available this week only."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Scarcity Play</strong>
+                        <p>"VIP tier available for first 500 new players only."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Deadline</strong>
+                        <p>"Your new player bonus expires in 72 hours."</p>
+                    </div>
+                </div>
+
+                <h3>Ease & Accessibility Hooks</h3>
+                <div class="hook-grid">
+                    <div class="hook-item">
+                        <strong>No Complexity</strong>
+                        <p>"No strategy required. No skill needed. Just play."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Speed to Play</strong>
+                        <p>"Download → Claim → Play in 60 seconds flat."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Mobile First</strong>
+                        <p>"Works on any phone. 2 minutes to set up and start."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Simplicity</strong>
+                        <p>"Tap claim. Tap play. Keep your winnings. That's it."</p>
+                    </div>
+                </div>
+
+                <h3>Opportunity & Missing Out Hooks</h3>
+                <div class="hook-grid">
+                    <div class="hook-item">
+                        <strong>Stat-Driven</strong>
+                        <p>"95% of daily players miss this simple bonus routine."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Social Proof</strong>
+                        <p>"Players are stacking $300+ monthly from free entries."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Dollar Amount</strong>
+                        <p>"One daily hack = $50+ per week (takes 3 minutes)."</p>
+                    </div>
+                    <div class="hook-item">
+                        <strong>Competitive</strong>
+                        <p>"Competitors are stacking bonuses. You could be too."</p>
+                    </div>
+                </div>
+
+                <h3>Pro Tips for Writing & Testing Hooks</h3>
+                <div class="checklist">
+                    <ul>
+                        <li><strong>Specificity wins.</strong> "$200+ per week" converts 40% better than "earn lots of bonuses"</li>
+                        <li><strong>Use "guaranteed" carefully.</strong> "Guaranteed entries" ✓ | "Guaranteed wins" ✗ (FTC violation)</li>
+                        <li><strong>Lead with the benefit.</strong> What does the player GET? Not what you provide.</li>
+                        <li><strong>Test stat-driven first.</strong> "95% miss this" + "$300+ per month" = 30-40% better retention</li>
+                        <li><strong>Numbers > adjectives.</strong> "Stack $50/week" beats "earn amazing bonuses"</li>
+                        <li><strong>Combine with frameworks.</strong> Hook is opening act. Framework is the full story.</li>
+                        <li><strong>Test 3 variations per phase.</strong> Different angles on same hook beat completely different hooks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Lift.win Creative Builder</strong> — Comprehensive Team Reference Guide</p>
+            <p>Version 2.0 | Updated September 2026</p>
+            <p>Invoke the skill: <code>/lift-win-creative-builder start</code></p>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
